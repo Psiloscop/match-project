@@ -8,6 +8,8 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+        mapping_types:
+            enum: string
         types:
             # Common
             datetime: App\Common\Infrastructure\Doctrine\Type\DateTimeType
