@@ -13,8 +13,8 @@ namespace App\Question\Domain\ValueObject;
 enum Type: string
 {
     case U_INT = 'u_int';
-    case U_BIGINT = 'u_big_int';
-    case STRING = 'string';
+    case U_BIGINT = 'u_bigint';
+    case STRING_50 = 'string_50';
     case DATETIME = 'datetime';
-    case BOOLEAN = 'boolean';
+    case BOOL = 'bool';
 }

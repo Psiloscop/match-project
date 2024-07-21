@@ -2,12 +2,14 @@
 
 namespace App\Question\Infrastructure\Doctrine\Repository;
 
+use App\Question\Domain\ValueObject\Type;
+use App\Question\Infrastructure\Doctrine\Entity\AnswerUInt;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use App\Question\Domain\Entity\Answer;
 use App\Question\Domain\Entity\Profile;
 use App\Question\Domain\Entity\Question;
 use App\Question\Domain\Repository\AnswerRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 class DoctrineAnswerRepository implements AnswerRepository
 {
@@ -19,8 +21,17 @@ class DoctrineAnswerRepository implements AnswerRepository
     public function getAnswerForQuestion(Question $question, Profile $profile): Answer
     {
         $rsm = new ResultSetMappingBuilder($this->entityManager);
-        $rsm->addRootEntityFromClassMetadata(Answer::class, 'a');
-        $rsm->addJoinedEntityFromClassMetadata('MyProject\Address', 'a', 'u', 'address', array('id' => 'address_id'));
+        $rsm->addRootEntityFromClassMetadata(Question::class, 'q');
+        $rsm->addJoinedEntityFromClassMetadata(
+            AnswerUInt::class,
+            'qa_uint',
+            'q',
+            'Question_answers_uint',
+            [
+                'id' => 'question_id',
+                'question_type' => '"' . Type::U_INT->value . '"',
+            ]
+        );
 
     }
 }
