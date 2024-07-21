@@ -13,6 +13,7 @@ doctrine:
             datetime: App\Common\Infrastructure\Doctrine\Type\DateTimeType
             email: App\Common\Infrastructure\Doctrine\Type\EmailType
             # Question
+            profile_id: App\Question\Infrastructure\Doctrine\Type\ProfileIdType
             question_id: App\Question\Infrastructure\Doctrine\Type\QuestionIdType
             internal_name: App\Question\Infrastructure\Doctrine\Type\InternalNameType
             display_name: App\Question\Infrastructure\Doctrine\Type\DisplayNameType
@@ -22,6 +23,7 @@ doctrine:
             option_value: App\Question\Infrastructure\Doctrine\Type\OptionValueType
             option_label: App\Question\Infrastructure\Doctrine\Type\OptionLabelType
             option_order: App\Question\Infrastructure\Doctrine\Type\OptionOrderType
+            answer_id: App\Question\Infrastructure\Doctrine\Type\AnswerIdType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -41,11 +43,11 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Question/Infrastructure/Doctrine/Mapping'
                 prefix: 'App\Question\Domain\Entity'
-#            Question_Infrastructure:
-#                is_bundle: false
-#                type: attribute
-#                dir: '%kernel.project_dir%/src/Question/Infrastructure/Doctrine/Entity'
-#                prefix: 'App\Question\Infrastructure\Entity'
+            Question_Infrastructure:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Question/Infrastructure/Doctrine/Entity'
+                prefix: 'App\Question\Infrastructure\Doctrine\Entity'
         controller_resolver:
             auto_mapping: false
 

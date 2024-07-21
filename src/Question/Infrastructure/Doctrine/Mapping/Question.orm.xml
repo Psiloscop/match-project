@@ -3,8 +3,10 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Question\Domain\Entity\Question" table="questions">
-        <id name="id" type="question_id" column="id"/>
+    <entity name="App\Question\Domain\Entity\Question" table="Question_questions">
+        <id name="id" type="question_id" column="id">
+            <generator strategy="AUTO"/>
+        </id>
 
         <field name="internalName" type="internal_name" column="internal_name"/>
         <field name="displayName" type="display_name" column="display_name"/>

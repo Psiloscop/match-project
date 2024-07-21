@@ -18,7 +18,9 @@ abstract class UIntType extends DoctrineIntegerType
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getIntegerTypeDeclarationSQL($column) . ' UNSIGNED';
+        $column['unsigned'] = true;
+
+        return $platform->getIntegerTypeDeclarationSQL($column);
     }
 
     public function getName(): string

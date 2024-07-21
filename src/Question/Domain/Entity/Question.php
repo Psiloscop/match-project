@@ -35,7 +35,13 @@ class Question
         Presentation $presentation,
         array $options
     )
-    {}
+    {
+        $this->internalName = $internalName;
+        $this->displayName = $displayName;
+        $this->type = $type;
+        $this->presentation = $presentation;
+        $this->options = $options;
+    }
 
     public static function create(
         InternalName $internalName,

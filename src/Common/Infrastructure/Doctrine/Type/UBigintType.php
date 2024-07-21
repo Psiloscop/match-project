@@ -18,7 +18,9 @@ abstract class UBigintType extends BigIntType
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBigIntTypeDeclarationSQL($column) . ' UNSIGNED';
+        $column['unsigned'] = true;
+
+        return $platform->getBigIntTypeDeclarationSQL($column);
     }
 
     public function getName(): string

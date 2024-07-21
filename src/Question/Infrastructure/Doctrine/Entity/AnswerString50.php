@@ -9,12 +9,11 @@ use App\Question\Domain\Entity\Profile;
 use App\Question\Domain\Entity\Question;
 use App\Question\Domain\ValueObject\AnswerId;
 use App\Question\Infrastructure\Doctrine\Type\AnswerIdType;
-use App\Question\Infrastructure\Doctrine\Repository\DoctrineAnswerUIntRepository;
+use App\Question\Infrastructure\Doctrine\Repository\DoctrineAnswerString50Repository;
 
-
-#[Table(name: 'Question_answers_uint')]
-#[ORM\Entity(repositoryClass: DoctrineAnswerUIntRepository::class)]
-class AnswerUInt
+#[Table(name: 'Question_answers_string50')]
+#[ORM\Entity(repositoryClass: DoctrineAnswerString50Repository::class)]
+class AnswerString50
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,8 +28,8 @@ class AnswerUInt
     #[ORM\JoinColumn(nullable: false)]
     private ?Question $question = null;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?int $data = null;
+    #[ORM\Column(type: Types::STRING, length: 50)]
+    private ?string $data = null;
 
     public function getId(): ?AnswerId
     {
@@ -47,18 +46,16 @@ class AnswerUInt
         return $this->question;
     }
 
-    public function getData(): ?int
+    public function getData(): ?string
     {
         return $this->data;
     }
 
     /**
-     * @param int|null $data
+     * @param string|null $data
      */
-    public function setData(?int $data): void
+    public function setData(?string $data): void
     {
-        // TODO: throw exception if data is negative
-
         $this->data = $data;
     }
 }

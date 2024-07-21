@@ -9,12 +9,11 @@ use App\Question\Domain\Entity\Profile;
 use App\Question\Domain\Entity\Question;
 use App\Question\Domain\ValueObject\AnswerId;
 use App\Question\Infrastructure\Doctrine\Type\AnswerIdType;
-use App\Question\Infrastructure\Doctrine\Repository\DoctrineAnswerUIntRepository;
+use App\Question\Infrastructure\Doctrine\Repository\DoctrineAnswerBoolRepository;
 
-
-#[Table(name: 'Question_answers_uint')]
-#[ORM\Entity(repositoryClass: DoctrineAnswerUIntRepository::class)]
-class AnswerUInt
+#[Table(name: 'Question_answers_bool')]
+#[ORM\Entity(repositoryClass: DoctrineAnswerBoolRepository::class)]
+class AnswerBool
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,8 +28,8 @@ class AnswerUInt
     #[ORM\JoinColumn(nullable: false)]
     private ?Question $question = null;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?int $data = null;
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $data = null;
 
     public function getId(): ?AnswerId
     {
@@ -47,18 +46,16 @@ class AnswerUInt
         return $this->question;
     }
 
-    public function getData(): ?int
+    public function getData(): ?bool
     {
         return $this->data;
     }
 
     /**
-     * @param int|null $data
+     * @param bool|null $data
      */
-    public function setData(?int $data): void
+    public function setData(?bool $data): void
     {
-        // TODO: throw exception if data is negative
-
         $this->data = $data;
     }
 }

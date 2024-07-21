@@ -2,9 +2,28 @@
 
 namespace App\Question\Domain\Entity;
 
-use App\Common\Domain\ValueObject\UBigintId;
+use App\Question\Domain\ValueObject\ProfileId;
 
 class Profile
 {
-    private UBigintId $id;
+    private ProfileId $id;
+
+    private function __construct(
+        ProfileId $id
+    )
+    {
+        $this->id = $id;
+    }
+
+    public static function create(
+        ProfileId $id
+    ): Profile
+    {
+        return new self($id);
+    }
+
+    public function id(): ProfileId
+    {
+        return $this->id;
+    }
 }
