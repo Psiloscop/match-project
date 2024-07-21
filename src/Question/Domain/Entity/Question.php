@@ -59,32 +59,32 @@ class Question
         );
     }
 
-    public function id(): QuestionId
+    public function getId(): QuestionId
     {
         return $this->id;
     }
 
-    public function internalName(): InternalName
+    public function getInternalName(): InternalName
     {
         return $this->internalName;
     }
 
-    public function displayName(): DisplayName
+    public function getDisplayName(): DisplayName
     {
         return $this->displayName;
     }
 
-    public function type(): Type
+    public function getType(): Type
     {
         return $this->type;
     }
 
-    public function presentation(): Presentation
+    public function getPresentation(): Presentation
     {
         return $this->presentation;
     }
 
-    public function options(): array
+    public function getOptions(): array
     {
         return $this->options;
     }

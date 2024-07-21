@@ -46,27 +46,27 @@ class Option
         );
     }
 
-    public function id(): OptionId
+    public function getId(): OptionId
     {
         return $this->id;
     }
 
-    public function value(): OptionValue
+    public function getValue(): OptionValue
     {
         return $this->value;
     }
 
-    public function label(): OptionLabel
+    public function getLabel(): OptionLabel
     {
         return $this->label;
     }
 
-    public function order(): OptionOrder
+    public function getOrder(): OptionOrder
     {
         return $this->order;
     }
 
-    public function question(): Question
+    public function getQuestion(): Question
     {
         return $this->question;
     }

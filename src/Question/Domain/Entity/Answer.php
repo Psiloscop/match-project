@@ -7,13 +7,19 @@ namespace App\Question\Domain\Entity;
  */
 class Answer
 {
-    public function __construct(
-        private readonly Profile $profile,
-        private $data
-    )
-    {}
+    private Profile $profile;
+    private $data;
 
-    public function profile(): Profile
+    public function __construct(
+        Profile $profile,
+        $data
+    )
+    {
+        $this->profile = $profile;
+        $this->data = $data;
+    }
+
+    public function getProfile(): Profile
     {
         return $this->profile;
     }
@@ -21,7 +27,7 @@ class Answer
     /**
      * @return T
      */
-    public function data()
+    public function getData()
     {
         return $this->data;
     }

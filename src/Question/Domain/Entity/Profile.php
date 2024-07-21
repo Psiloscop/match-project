@@ -22,7 +22,7 @@ class Profile
         return new self($id);
     }
 
-    public function id(): ProfileId
+    public function getId(): ProfileId
     {
         return $this->id;
     }
